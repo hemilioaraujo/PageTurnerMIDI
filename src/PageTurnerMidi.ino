@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <NimBLEDevice.h>
 #include <BLEMidi.h>
 #include <esp_system.h>
 
@@ -29,11 +30,10 @@ void setup() {
   pinMode(BUTTON_DOWN, INPUT_PULLUP);
   pinMode(BUTTON_UP, INPUT_PULLUP);
 
-  // initializeBlink();
-
   Serial.begin(115200);
   Serial.println("Initializing bluetooth");
-  BLEMidiServer.begin("PageTurner MIDI");
+  BLEMidiServer.begin("PageTurnerMIDI");
+  NimBLEDevice::setPower(ESP_PWR_LVL_P9); // ajusta a potência de transmissão do rádio bt para +9dBm
   Serial.println("Waiting for connections...");
   BLEMidiServer.setOnConnectCallback([]() {
     digitalWrite(LED_STATUS, HIGH);
@@ -43,7 +43,6 @@ void setup() {
     digitalWrite(LED_STATUS, LOW);
     Serial.println("Disconnected");
   });
-  //BLEMidiServer.enableDebugging();  // Uncomment if you want to see some debugging output from the library (not much for the server class...)
 }
 
 void loop() {
