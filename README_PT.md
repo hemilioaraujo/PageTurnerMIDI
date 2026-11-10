@@ -49,8 +49,27 @@ A pasta `laser-cut/` contém os arquivos de design para o gabinete do pedal (Obs
     * Ligue o pedal. O LED deve piscar.
     * No seu tablet/computador, procure por dispositivos Bluetooth.
     * Conecte-se a **"PageTurner MIDI"**. O LED ficará aceso fixo.
+    * *(Nota para Android: veja a seção de solução de problemas abaixo caso o dispositivo não apareça).*
 4. **Configuração do App:**
     * Abra seu aplicativo de partituras (ex: MobileSheets).
     * Vá para as Configurações MIDI.
     * Mapeie a Nota MIDI **69** para "Rolar para Baixo" ou "Próxima Página".
     * Mapeie a Nota MIDI **70** para "Rolar para Cima" ou "Página Anterior".
+
+## 📱 Solução de Problemas no Android (Dispositivo não aparece)
+
+Se o **PageTurner MIDI** não aparecer na busca dentro do seu aplicativo (ex: SongbookPro, MobileSheets), isso geralmente ocorre devido às regras de **Localização (GPS)** que o Android exige para escanear dispositivos Bluetooth Low Energy (BLE).
+
+### 🛠️ O que fazer:
+1. **Ative a Localização (GPS)** do aparelho nas configurações rápidas do Android.
+2. **Conceda permissão de Localização** para o seu aplicativo de música/partitura (`Configurações > Aplicativos > [Seu App] > Permissões`).
+
+### 📋 Resumo por versão do Android:
+
+| Versão do Android | Exige Permissão de Localização? | Exige GPS/Localização Ligado no Sistema? |
+| :--- | :--- | :--- |
+| **Android 5.1 ou anterior** | Não (permissão na instalação) | Não |
+| **Android 6.0 a Android 11** *(ex: Oreo 8.0/8.1)* | **Sim** (`ACCESS_FINE_LOCATION`) | **Sim** (o pedal não é listado se o GPS estiver desligado) |
+| **Android 12 em diante** | **Sim** (`BLUETOOTH_SCAN`) | **Não** (na maioria dos aplicativos atualizados) |
+
+> **Observação:** Em aparelhos com Android 6.0 a 11, o sistema operacional oculta os dispositivos BLE caso o GPS esteja desligado ou o app não tenha permissão de localização.

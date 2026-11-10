@@ -49,8 +49,27 @@ The `laser-cut/` folder contains the design files for the pedal enclosure (Obs.:
     * Power on the pedal. The LED should blink.
     * On your tablet/computer, search for Bluetooth devices.
     * Connect to **"PageTurner MIDI"**. The LED will stay solid ON.
+    * *(Android note: see troubleshooting section below if the device does not appear).*
 4. **App Configuration:**
     * Open your sheet music app (e.g., MobileSheets).
     * Go to MIDI Settings.
     * Map MIDI Note **69** to "Scroll Down" or "Next Page".
     * Map MIDI Note **70** to "Scroll Up" or "Previous Page".
+
+## 📱 Android Troubleshooting (Device Not Found)
+
+If **PageTurner MIDI** does not appear when scanning for devices inside your sheet music app (e.g., MobileSheets, SongbookPro), this is usually due to Android's **Location (GPS)** requirements for Bluetooth Low Energy (BLE) scanning.
+
+### 🛠️ How to fix:
+1. **Turn ON Location (GPS)** in your Android quick settings.
+2. **Grant Location permission** to your sheet music app (`Settings > Apps > [Your App] > Permissions`).
+
+### 📋 Behavior by Android Version:
+
+| Android Version | Requires Location Permission? | Requires Location/GPS Turned ON? |
+| :--- | :--- | :--- |
+| **Android 5.1 and earlier** | No (install-time permission) | No |
+| **Android 6.0 to Android 11** *(e.g. Oreo 8.0/8.1)* | **Yes** (`ACCESS_FINE_LOCATION`) | **Yes** (devices are hidden if GPS is off) |
+| **Android 12 and newer** | **Yes** (`BLUETOOTH_SCAN`) | **No** (for most updated apps) |
+
+> **Note:** On devices running Android 6.0 through 11, the operating system hides nearby BLE devices if GPS is turned off or if location permissions have not been granted to the app.
