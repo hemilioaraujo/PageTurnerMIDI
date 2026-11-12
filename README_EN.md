@@ -48,7 +48,7 @@ The `laser-cut/` folder contains the design files for the pedal enclosure (Obs.:
 3. **Pairing:**
     * Power on the pedal. The LED should blink.
     * On your tablet/computer, search for Bluetooth devices.
-    * Connect to **"PageTurner MIDI"**. The LED will stay solid ON.
+    * Connect to **"PT-MIDI"** (or **"PageTurner MIDI"**). The LED will stay solid ON.
     * *(Android note: see troubleshooting section below if the device does not appear).*
 4. **App Configuration:**
     * Open your sheet music app (e.g., MobileSheets).

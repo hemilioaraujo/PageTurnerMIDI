@@ -48,7 +48,7 @@ A pasta `laser-cut/` contém os arquivos de design para o gabinete do pedal (Obs
 3. **Pareamento:**
     * Ligue o pedal. O LED deve piscar.
     * No seu tablet/computador, procure por dispositivos Bluetooth.
-    * Conecte-se a **"PageTurner MIDI"**. O LED ficará aceso fixo.
+    * Conecte-se a **"PT-MIDI"** (ou **"PageTurner MIDI"**). O LED ficará aceso fixo.
     * *(Nota para Android: veja a seção de solução de problemas abaixo caso o dispositivo não apareça).*
 4. **Configuração do App:**
     * Abra seu aplicativo de partituras (ex: MobileSheets).

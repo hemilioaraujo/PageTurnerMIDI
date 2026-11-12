@@ -32,8 +32,16 @@ void setup() {
 
   Serial.begin(115200);
   Serial.println("Initializing bluetooth");
-  BLEMidiServer.begin("PageTurnerMIDI");
+  BLEMidiServer.begin("PT-MIDI");
   NimBLEDevice::setPower(ESP_PWR_LVL_P9); // ajusta a potência de transmissão do rádio bt para +9dBm
+
+  // Garante que o nome seja anunciado no Scan Response
+  NimBLEAdvertising *pAdvertising = NimBLEDevice::getAdvertising();
+  NimBLEAdvertisementData scanResponseData;
+  scanResponseData.setName("PT-MIDI");
+  pAdvertising->setScanResponseData(scanResponseData);
+  pAdvertising->start();
+
   Serial.println("Waiting for connections...");
   BLEMidiServer.setOnConnectCallback([]() {
     digitalWrite(LED_STATUS, HIGH);
