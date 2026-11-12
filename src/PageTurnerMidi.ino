@@ -21,6 +21,8 @@
 // ==========================================
 // Constantes e Definições de Hardware e MIDI
 // ==========================================
+const char* const DEVICE_NAME = "PT-MIDI";
+
 const uint8_t BUTTON_DOWN = 13;
 const uint8_t BUTTON_UP = 15;
 const uint8_t LED_STATUS = 16;
@@ -132,10 +134,12 @@ void setup() {
   pinMode(BUTTON_UP, INPUT_PULLUP);
 
   Serial.begin(115200);
-  Serial.println("Initializing bluetooth with Control Surface...");
+  Serial.print("Initializing bluetooth with Control Surface (");
+  Serial.print(DEVICE_NAME);
+  Serial.println(")...");
 
   // Define o nome de anúncio BLE antes de inicializar o Control Surface
-  midi.setName("PageTurnerMIDI");
+  midi.setName(DEVICE_NAME);
 
   // Inicializa o Control Surface e as interfaces MIDI ativas
   Control_Surface.begin();
