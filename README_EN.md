@@ -43,7 +43,9 @@ The `laser-cut/` folder contains the design files for the pedal enclosure (Obs.:
 1. **Hardware Assembly:** Follow the circuit diagram to connect the buttons and LED to your ESP32.
 2. **Upload Firmware:**
     * Open the project (PlatformIO recommended or Arduino IDE).
-    * Install the required libraries (e.g., `BLE-MIDI`).
+    * Install the required libraries:
+      * **Control Surface** (by Pieter P / tttapa)
+      * **NimBLE-Arduino** (optional, when using `#define CS_USE_NIMBLE`)
     * Upload `src/PageTurnerMidi.ino` to your ESP32.
 3. **Pairing:**
     * Power on the pedal. The LED should blink.

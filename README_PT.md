@@ -43,7 +43,9 @@ A pasta `laser-cut/` contém os arquivos de design para o gabinete do pedal (Obs
 1. **Montagem do Hardware:** Siga o diagrama do circuito para conectar os botões e o LED ao seu ESP32.
 2. **Upload do Firmware:**
     * Abra o projeto (Recomendado PlatformIO ou Arduino IDE).
-    * Instale as bibliotecas necessárias (ex: `BLE-MIDI`).
+    * Instale as bibliotecas necessárias:
+      * **Control Surface** (por Pieter P / tttapa)
+      * **NimBLE-Arduino** (opcional, para uso com `#define CS_USE_NIMBLE`)
     * Faça o upload do `src/PageTurnerMidi.ino` para o seu ESP32.
 3. **Pareamento:**
     * Ligue o pedal. O LED deve piscar.
