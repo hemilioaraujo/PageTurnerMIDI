@@ -38,19 +38,36 @@ A pasta `laser-cut/` contém os arquivos de design para o gabinete do pedal (Obs
 * `page-turner.svg`: Arquivo vetorial para corte a laser.
 * `pedal-page-turner.lbrn2`: Arquivo de projeto do LightBurn.
 
+## 📚 Dependências de Software
+
+Para compilar o firmware no **Arduino IDE** ou **PlatformIO**, as seguintes bibliotecas são necessárias:
+
+| Biblioteca / Pacote | Descrição | Obrigatória? |
+| :--- | :--- | :--- |
+| **[ESP32 Board Package](https://github.com/espressif/arduino-esp32)** | Suporte básico à arquitetura ESP32 no Arduino/PlatformIO | **Sim** |
+| **[Control Surface](https://github.com/tttapa/Control-Surface)** (por Pieter P / tttapa) | Gerenciamento de eventos MIDI, interface BLE MIDI e leitura de botões com debounce | **Sim** |
+| **[NimBLE-Arduino](https://github.com/h2zero/NimBLE-Arduino)** (por h2zero) | Pilha Bluetooth leve para economia de memória RAM e Flash | *Opcional* (para uso com `#define CS_USE_NIMBLE`) |
+
+### Como instalar:
+* **Arduino IDE:** Abra o Gerenciador de Bibliotecas (`Ctrl + Shift + I`) e pesquise por **Control Surface** (e opcionalmente **NimBLE-Arduino**).
+* **PlatformIO (`platformio.ini`):**
+  ```ini
+  lib_deps =
+      tttapa/Control Surface @ ^1.2.0
+      ; h2zero/NimBLE-Arduino @ ^1.4.2 ; Descomente caso utilize CS_USE_NIMBLE
+  ```
+
 ## 🚀 Instalação e Uso
 
 1. **Montagem do Hardware:** Siga o diagrama do circuito para conectar os botões e o LED ao seu ESP32.
 2. **Upload do Firmware:**
-    * Abra o projeto (Recomendado PlatformIO ou Arduino IDE).
-    * Instale as bibliotecas necessárias:
-      * **Control Surface** (por Pieter P / tttapa)
-      * **NimBLE-Arduino** (opcional, para uso com `#define CS_USE_NIMBLE`)
+    * Abra o projeto no PlatformIO ou Arduino IDE.
+    * Certifique-se de ter instalado as dependências listadas acima.
     * Faça o upload do `src/PageTurnerMidi.ino` para o seu ESP32.
 3. **Pareamento:**
     * Ligue o pedal. O LED deve piscar.
     * No seu tablet/computador, procure por dispositivos Bluetooth.
-    * Conecte-se a **"PageTurner MIDI"**. O LED ficará aceso fixo.
+    * Conecte-se a **"PT-MIDI"** (definido pela constante `DEVICE_NAME`). O LED ficará aceso fixo.
     * *(Nota para Android: veja a seção de solução de problemas abaixo caso o dispositivo não apareça).*
 4. **Configuração do App:**
     * Abra seu aplicativo de partituras (ex: MobileSheets).
@@ -60,7 +77,7 @@ A pasta `laser-cut/` contém os arquivos de design para o gabinete do pedal (Obs
 
 ## 📱 Solução de Problemas no Android (Dispositivo não aparece)
 
-Se o **PageTurner MIDI** não aparecer na busca dentro do seu aplicativo (ex: SongbookPro, MobileSheets), isso geralmente ocorre devido às regras de **Localização (GPS)** que o Android exige para escanear dispositivos Bluetooth Low Energy (BLE).
+Se o **PT-MIDI** não aparecer na busca dentro do seu aplicativo (ex: SongbookPro, MobileSheets), isso geralmente ocorre devido às regras de **Localização (GPS)** que o Android exige para escanear dispositivos Bluetooth Low Energy (BLE).
 
 ### 🛠️ O que fazer:
 1. **Ative a Localização (GPS)** do aparelho nas configurações rápidas do Android.
